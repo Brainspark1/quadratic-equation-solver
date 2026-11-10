@@ -15,5 +15,47 @@
     <h4 class="medium-small-size">What is a quadratic?</h4>
 
     <p>A quadratic is a <span class="explanation">polynomial</span> whose <span class="explanation">degree</span> is exactly 2.</p>
+    <p>When graphed, they will always follow the shape of a parabolic arc or curve. For example,</p>
+    <img src="assets/parabola-image.png" alt="Parabolic curves">
+
+    <h4 class="medium-small-size">How can I see a quadratic?</h4>
+
+    <p>Quadratics can be represented in three distinct <span class="explanation">mathematical structures</span>.</p>
+
+    <h4 class="small-size">Standard Form</h4>
+    <p>This is likely the one you have seen the most at this point, and can be represented by the general form</p>
+    <p><span class="explanation">f(x)</span> = ax<sup>2</sup> + bx + c.</p>
+    <p>For example</p>
+    <p>f(x) = x<sup>2</sup> + 3x + 5.</p>
+    <p>This form features terms with coefficients (a, b and c) separated by addition or subtraction, like in the example above - note that the x<sup>2</sup> term must exist, otherwise the degree wouldn't be 2, and thus a <span class="explanation">≠</span> 0. It also has terms that must be in descending degree order, and thus in the case of a quadratic the leading term with a degree of 2 must go at the front of the function, followed by the term with a degree 1 if needed and the term with no degree/<span class="explanation">constant</span> if needed.</p>
+    <p>Standard form can be used for all polynomials of all degrees, but let's not go too deep into that!</p>
+
+    <h4 class="small-size">Vertex Form</h4>
+    <p>This is much more exclusive to quadratics, and can be represented by the general form</p>
+    <p>f(x) = a(x - h)<sup>2</sup> + k,</p>
+    <p>where (h, k) is the <span class="explanation">vertex</span> of the quadratic.</p>
+    <p>For example</p>
+    <p>f(x) = 3(x - 4)<sup>2</sup> + 5.</p>
+    <p>If we were to graph that, it would look something like</p>
+    <img src="assets/vertex-image.png" width="400px;" alt="Plotting above function on Desmos">
+    <p>Notice that from our general form, we should have a vertex at (4, 5), and this is true in the highlighted point on the graph.</p>
+
+    <h4 class="small-size">Factored Form</h4>
+    <p>This can again be used for all polynomials of different degrees, but is most commonly used for quadratics. It can be represented by the general form</p>
+    <p>f(x) = a(x - p)(x - q),</p>
+    <p>where p and q are the <span class="explanation">solutions</span> of the function.</p>
+    <p>For example</p>
+    <p>f(x) = 3(x - 4)(x - 5).</p>
+    <p>Now, you might be panicking, saying (cue the high-pitched squealing)</p>
+    <p><i>but, but, where is the degree of 2?</i></p>
+    <p>That's a good observation. But now I want you to try and expand it out so there are no more parantheses visible. So,</p>
+    <p>f(x) = 3(x<sup>2</sup> - 9x + 20), thus</p>
+    <p>f(x) = 3x<sup>2</sup> - 27x + 60.</p>
+    <p>And look at that, the degree of 2 came back! This happens because factored form is just a more compact form that allows us to see the solutions of the quadratic function, but the quadratic part of the function still exists.</p>
+
+    <p>Notice how each of these three forms all have an a value. This dictates the overall shape of the parabolic graph. Talking about signage, if the a value is positive, then the graph will open upwards, as shown in the image at the top of the page. If the a value is negative, the graph will open downwards, as shown in the same image.</p>
+    <p>Additionally, the <span class="explanation">magnitude</span> of the a value also determines the apparent "width" of the parabola. The larger the value gets, the narrower the graph becomes, and the closer to 0 the a value gets, the wider the graph becomes. Take a look at the images below to illustrate what I mean.</p>
+    <img src="assets/a-value-image.png" width="750px;" alt="Larger a value = narrower graph image on Desmos">
+    <script src="app.js"></script>
 </body>
 </html>
