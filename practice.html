@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice - Save My Quadratics Test</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="first-color">
+    <header>
+      <nav>
+        <a class="nav-link" href="explanation.html">Explanation</a>
+        <a class="nav-link" href="computation.html">Computation</a>
+        <a class="clicked-nav" href="practice.html">Practice</a>
+        <a class="nav-link" href="resources.html">Resources</a>
+      </nav>
+    </header>
+    <h2 class="medium-size">Practice Problems</h2>
+    <p class="medium-small-size">
+      Get a random quiz of questions with the conditions that
+      <span class="fourth-color">YOU</span> need.
+    </p>
+
+    <section id="practice-input-section">
+      <div class="practice-element">
+        <label class="very-small-size" for="num-questions"
+          >Number of questions:</label
+        >
+        <input class="very-small-size" name="num-questions" type="number" />
+      </div>
+      <br />
+
+      <div class="practice-element">
+        <label class="very-small-size" for="difficulty"
+          >Difficulty level:</label
+        >
+        <select class="very-small-size" name="difficulty">
+          <option value="choose">-- Choose one --</option>
+          <option value="mild">Mild</option>
+          <option value="medium">Medium</option>
+          <option value="spicy">Spicy</option>
+          <option value="hardcore">Hardcore</option>
+        </select>
+      </div>
+      <br />
+
+      <div class="practice-element">
+        <label class="very-small-size" for="timed">Timed?</label>
+        <input style="width: 20px; height: 20px" type="checkbox" name="timed" />
+      </div>
+      <br />
+
+      <button class="small-size">Start</button>
+    </section>
+  </body>
+</html>

@@ -47,12 +47,15 @@ h1 {
   font-size: 1.25rem;
 }
 
+nav {
+  margin-top: 28px;
+}
+
 .nav-link {
   background: #118a7e;
   color: white;
   text-decoration: none;
-  display: inline-block;
-  padding: 10px 30px;
+  padding: 10px 30px; /* 10 px inner space on top and bottom, 30 px inner space on left and right */
   border-radius: 999px;
   margin-left: 30px;
 }
@@ -61,9 +64,17 @@ h1 {
   background: #aaece6;
   color: #3baea0;
   text-decoration: none;
-  display: inline-block;
-  padding: 10px 30px;
+  padding: 10px 30px; /* 10 px inner space on top and bottom, 30 px inner space on left and right */
   border-radius: 999px;
+}
+
+.clicked-nav {
+  background: #aaece6;
+  color: #3baea0;
+  text-decoration: none;
+  padding: 10px 30px; /* 10 px inner space on top and bottom, 30 px inner space on left and right */
+  border-radius: 999px;
+  margin-left: 30px;
 }
 
 .explanation {
@@ -73,6 +84,40 @@ h1 {
 
 p {
   font-size: 20px;
+}
+
+.resource-section {
+  border: 6px solid #1f6f78; /* width, style, color */
+  padding: 8px 23px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+#comp-section {
+  border: 6px solid #1f6f78; /* width, style, color */
+  padding: 8px 23px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+#practice-input-section {
+  border: 6px solid #1f6f78; /* width, style, color */
+  padding: 8px 23px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  width: 500px;
+  margin-left: auto; /* auto tells browser to automatically calculate available space on left and right margins and distribute it to each side - center alignment */
+  margin-right: auto;
+}
+
+#desmos-input {
+  width: 1000px;
+  height: 675px;
+  border-radius: 20px;
+}
+
+#form-select {
+  margin-left: 20px;
 }
 
 @keyframes fadeIn {

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computation - Save My Quadratics Test</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="first-color">
+    <header>
+      <nav>
+        <a class="nav-link" href="explanation.html">Explanation</a>
+        <a class="clicked-nav" href="computation.html">Computation</a>
+        <a class="nav-link" href="practice.html">Practice</a>
+        <a class="nav-link" href="resources.html">Resources</a>
+      </nav>
+    </header>
+
+    <h2 class="medium-size">
+      See it to <span class="fourth-color">believe</span> it.
+    </h2>
+
+    <iframe
+      src="https://www.desmos.com/calculator"
+      id="desmos-input"
+      frameborder="0"
+    ></iframe>
+
+    <p>
+      If you haven't heard of this tool before, this is Desmos. It is a free,
+      online graphing calculator that allows you to plot various functions and
+      graphs and see how they look. Try it out
+      <a class="fourth-color" href="https://www.desmos.com/calculator">here</a>!
+    </p>
+
+    <p>
+      To see these concepts in action, choose a quadratic form, plug in the
+      numbers, and look at the Desmos window above to see what it looks like.
+    </p>
+
+    <section id="comp-section">
+      <label class="small-size" for="form-select">Choose a form:</label>
+      <select id="form-select" class="very-small-size" name="form-select">
+        <option value="choose" selected>-- Select an option --</option>
+        <option value="standard">Standard Form</option>
+        <option value="vertex">Vertex Form</option>
+        <option value="factored">Factored Form</option>
+      </select>
+
+      <div style="margin-top: 30px">
+        <label class="very-small-size" for="a-value">a: </label>
+        <input
+          type="number"
+          name="a-value"
+          style="margin-right: 25px"
+          class="very-small-size"
+        />
+
+        <label class="very-small-size" for="b-value">b: </label>
+        <input
+          type="number"
+          name="b-value"
+          style="margin-right: 25px"
+          class="very-small-size"
+        />
+
+        <label class="very-small-size" for="c-value">c: </label>
+        <input type="number" name="c-value" class="very-small-size" />
+      </div>
+
+      <button class="small-size" style="margin-top: 25px">Solve</button>
+    </section>
+
+    <h3 class="medium-small-size">Other Results:</h3>
+  </body>
+</html>
