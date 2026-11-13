@@ -40,8 +40,19 @@ The size of the numerical value held by a variable.
 `,
 ];
 
+let alertBox = document.getElementById("customAlertBox");
+let alertMessageContainer = document.getElementById("alertMessage");
+let closeButton = document.querySelector(".close");
+
+closeButton.addEventListener("click", function () {
+  // hiding the explanation textbox when the close button is clicked
+  alertBox.style.display = "none";
+});
+
 for (let i = 0; i < explanationElements.length; i++) {
   explanationElements[i].addEventListener("click", function () {
-    alert(explanationArray[i]);
+    alertMessageContainer.innerHTML = explanationArray[i];
+    // allowing the new text to sit with the other elements / not be hidden
+    alertBox.style.display = "block";
   });
 }
