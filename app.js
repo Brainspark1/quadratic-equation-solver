@@ -126,17 +126,17 @@ if (solveButton && calculator) {
 
     if (selectElement.value === "standard") {
       // parsing the decimal values from the inputs as floats - defaulting each value if they are nan/not a number
-      const a = parseFloat(document.getElementById("input-a").value);
+      let a = parseFloat(document.getElementById("input-a").value);
       if (isNaN(a)) {
         a = 1; // defaulting to 1, as cannot to 0 since then there would be no x^2 term and it wouldn't a quadratic
       }
 
-      const b = parseFloat(document.getElementById("input-b").value);
+      let b = parseFloat(document.getElementById("input-b").value);
       if (isNaN(b)) {
         b = 0; // defaulting to 0/no b term
       }
 
-      const c = parseFloat(document.getElementById("input-c").value);
+      let c = parseFloat(document.getElementById("input-c").value);
       if (isNaN(c)) {
         c = 0; // defaulting to 0/no c term
       }
@@ -171,9 +171,22 @@ if (solveButton && calculator) {
         \nClearly, the discriminant is less than 0, and as we know that means that there cannot be any real solutions to this quadratic. `;
       }
     } else if (selectElement.value === "vertex") {
-      const a = parseFloat(document.getElementById("vertex-a").value) || 1;
-      const h = parseFloat(document.getElementById("vertex-h").value) || 0;
-      const k = parseFloat(document.getElementById("vertex-k").value) || 0;
+      // parsing the decimal values from the inputs as floats - defaulting each value if they are nan/not a number
+      let a = parseFloat(document.getElementById("vertex-a").value);
+      if (isNaN(a)) {
+        a = 1; // defaulting to 1, as cannot to 0 since then there would be no x^2 term and it wouldn't a quadratic
+      }
+
+      let h = parseFloat(document.getElementById("vertex-h").value);
+      if (isNaN(h)) {
+        h = 0; // defaulting to 0/no h term
+      }
+
+      let k = parseFloat(document.getElementById("vertex-k").value);
+      if (isNaN(k)) {
+        k = 0; // defaulting to 0/no k term
+      }
+
       latexString = `y = ${a}(x - (${h}))^2 + (${k})`;
       let check = (-1 * k) / a;
 
@@ -203,9 +216,22 @@ if (solveButton && calculator) {
         \nTo keep going, we would need to take the square root of ${Math.round(check * 10000) / 10000}. However, because this number is negative, we cannot take its real square root! Therefore, there are no real solutions to this quadratic.`;
       }
     } else if (selectElement.value === "factored") {
-      const a = parseFloat(document.getElementById("factored-a").value) || 1;
-      const p = parseFloat(document.getElementById("factored-p").value) || 0;
-      const q = parseFloat(document.getElementById("factored-q").value) || 0;
+      // parsing the decimal values from the inputs as floats - defaulting each value if they are nan/not a number
+      let a = parseFloat(document.getElementById("vertex-a").value);
+      if (isNaN(a)) {
+        a = 1; // defaulting to 1, as cannot to 0 since then there would be no x^2 term and it wouldn't a quadratic
+      }
+
+      let p = parseFloat(document.getElementById("factored-p").value);
+      if (isNaN(p)) {
+        p = 0; // defaulting to 0/no h term
+      }
+
+      let q = parseFloat(document.getElementById("factored-q").value);
+      if (isNaN(q)) {
+        q = 0; // defaulting to 0/no k term
+      }
+
       latexString = `y = ${a}(x - (${p}))(x - (${q}))`;
 
       if (p !== q) {
