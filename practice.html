@@ -32,7 +32,16 @@
         <label class="very-small-size" for="num-questions"
           >Number of questions:</label
         >
-        <input class="very-small-size" name="num-questions" type="number" />
+
+        <input
+          id="num-questions"
+          class="very-small-size"
+          name="num-questions"
+          type="number"
+          min="1"
+          max="25"
+          value="5"
+        />
       </div>
       <br />
 
@@ -40,7 +49,8 @@
         <label class="very-small-size" for="difficulty"
           >Difficulty level:</label
         >
-        <select class="very-small-size" name="difficulty">
+
+        <select id="difficulty" class="very-small-size" name="difficulty">
           <option value="choose">-- Choose one --</option>
           <option value="mild">Mild</option>
           <option value="medium">Medium</option>
@@ -52,11 +62,39 @@
 
       <div class="practice-element">
         <label class="very-small-size" for="timed">Timed?</label>
-        <input style="width: 20px; height: 20px" type="checkbox" name="timed" />
+
+        <input
+          id="timed"
+          style="width: 20px; height: 20px"
+          type="checkbox"
+          name="timed"
+        />
       </div>
       <br />
 
-      <button class="small-size">Start</button>
+      <button class="small-size" id="start-button" onclick="startQuiz()">
+        Start
+      </button>
     </section>
+
+    <section id="quiz-container" hidden>
+      <div id="timer-display" class="medium-small-size"></div>
+      <p id="progress-display" class="very-small-size"></p>
+
+      <div id="current-question-area" class="practice-element"></div>
+
+      <br />
+      <!-- buttons to go to next/previous/submit quizzes -->
+      <div id="nav-buttons">
+        <button id="previous-button" class="small-size">Previous</button>
+        <button id="next-button" class="small-size">Next</button>
+        <!-- submit button initially hidden, appears on last question at end of quiz -->
+        <button id="submit-button" class="small-size" hidden>Submit</button>
+      </div>
+
+      <div id="results-area"></div>
+    </section>
+
+    <script src="app.js"></script>
   </body>
 </html>

@@ -26,18 +26,14 @@
       See it to <span class="fourth-color">believe</span> it.
     </h2>
 
-    <iframe
-      src="https://www.desmos.com/calculator"
-      id="desmos-input"
-      frameborder="0"
-    ></iframe>
-
     <p>
-      If you haven't heard of this tool before, this is Desmos. It is a free,
-      online graphing calculator that allows you to plot various functions and
-      graphs and see how they look. Try it out
+      If you haven't heard of this tool before, this is Desmos. It's a free,
+      online graphing calculator to plot various functions and see how they
+      look. Try it out
       <a class="fourth-color" href="https://www.desmos.com/calculator">here</a>!
     </p>
+
+    <div id="calculator"></div>
 
     <p>
       To see these concepts in action, choose a quadratic form, plug in the
@@ -53,30 +49,113 @@
         <option value="factored">Factored Form</option>
       </select>
 
-      <div style="margin-top: 30px">
-        <label class="very-small-size" for="a-value">a: </label>
+      <!-- standard form -->
+      <div id="standard-div" style="margin-top: 30px" hidden>
+        <label class="very-small-size" for="input-a">a: </label>
         <input
           type="number"
           name="a-value"
           style="margin-right: 25px"
           class="very-small-size"
+          id="input-a"
         />
 
-        <label class="very-small-size" for="b-value">b: </label>
+        <label class="very-small-size" for="input-b">b: </label>
         <input
           type="number"
           name="b-value"
           style="margin-right: 25px"
           class="very-small-size"
+          id="input-b"
         />
 
-        <label class="very-small-size" for="c-value">c: </label>
-        <input type="number" name="c-value" class="very-small-size" />
+        <label class="very-small-size" for="input-c">c: </label>
+        <input
+          type="number"
+          name="c-value"
+          class="very-small-size"
+          id="input-c"
+        />
       </div>
 
-      <button class="small-size" style="margin-top: 25px">Solve</button>
+      <!-- vertex form -->
+      <div id="vertex-div" style="margin-top: 30px" hidden>
+        <label class="very-small-size" for="vertex-a">a: </label>
+        <input
+          type="number"
+          name="a-value"
+          style="margin-right: 25px"
+          class="very-small-size"
+          id="vertex-a"
+        />
+
+        <label class="very-small-size" for="vertex-h">h: </label>
+        <input
+          type="number"
+          name="h-value"
+          style="margin-right: 25px"
+          class="very-small-size"
+          id="vertex-h"
+        />
+
+        <label class="very-small-size" for="vertex-k">k: </label>
+        <input
+          type="number"
+          name="k-value"
+          class="very-small-size"
+          id="vertex-k"
+        />
+      </div>
+
+      <!-- factored form -->
+      <div id="factored-div" style="margin-top: 30px" hidden>
+        <label class="very-small-size" for="factored-a">a: </label>
+        <input
+          type="number"
+          name="a-value"
+          style="margin-right: 25px"
+          class="very-small-size"
+          id="factored-a"
+        />
+
+        <label class="very-small-size" for="factored-p">p: </label>
+        <input
+          type="number"
+          name="p-value"
+          style="margin-right: 25px"
+          class="very-small-size"
+          id="factored-p"
+        />
+
+        <label class="very-small-size" for="factored-q">q: </label>
+        <input
+          type="number"
+          name="q-value"
+          class="very-small-size"
+          id="factored-q"
+        />
+      </div>
+
+      <br />
+      <button
+        id="solve-button"
+        class="small-size"
+        style="margin-top: 25px"
+        hidden
+      >
+        Solve
+      </button>
     </section>
 
-    <h3 class="medium-small-size">Other Results:</h3>
+    <h3 id="other-results" class="small-size" hidden>Solutions:</h3>
+
+    <div id="solutions-div" class="very-small-size"></div>
+    <br />
+    <div id="steps-div" class="very-small-size"></div>
+    <br />
+    <!-- API from desmos website to use desmos graphing calculator - free key -->
+    <script src="https://www.desmos.com/api/v1.12/calculator.js?apiKey=10ab9d3082b744e5bfd8ce5d8c1925ed"></script>
+
+    <script src="app.js"></script>
   </body>
 </html>
