@@ -161,7 +161,8 @@ p {
   border-radius: 8px;
 }
 
-#practice-input-section {
+#practice-input-section,
+#quiz-container {
   border: 6px solid #1f6f78; /* width, style, color */
   padding: 8px 23px;
   margin-bottom: 15px;

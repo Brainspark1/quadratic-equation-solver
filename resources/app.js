@@ -148,6 +148,7 @@ if (solveButton && calculator) {
         let solution1 = (-b + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
         let solution2 = (-b - Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
         if (solution1 !== solution2) {
+          // pattern to round to 4 decimal places in javascript, taken from stack overflow thread
           solution1 = Math.round(solution1 * 10000) / 10000;
           solution2 = Math.round(solution2 * 10000) / 10000;
           solutionsDiv.textContent = `x = ${solution1}, x = ${solution2}`;
@@ -344,7 +345,6 @@ function createProblem(difficulty) {
 let currentQuestions = []; // stores the current questions appearing for the user in their generated quiz
 let userResponses = []; // stores what the user types for each question as their corresponding answer
 let currentIndex = 0; // stores what question number the user is on - allows to get content for this question, and each of the questions surrounding it
-// adding timer logic later
 
 const startButton = document.getElementById("start-button");
 const numQuestionsField = document.getElementById("num-questions");
@@ -362,12 +362,14 @@ const currentQuestionArea = document.getElementById("current-question-area");
 const previousButton = document.getElementById("previous-button");
 const nextButton = document.getElementById("next-button");
 const submitButton = document.getElementById("submit-button");
+const timerDisplay = document.getElementById("timer-display");
 
-// function called with on click in start button - adding timing logic likely here, but later
+// function called with on click in start button
 function startQuiz() {
   // getting necessary values to use from input fields declared above
   const numQuestions = parseInt(numQuestionsField.value);
   const difficultyLevel = difficultyChoice.value;
+  const isTimed = timedCheck.checked;
 
   if (difficultyLevel === "choose") {
     alert("Please select a difficulty level first!");
@@ -378,6 +380,8 @@ function startQuiz() {
   currentQuestions = [];
   userResponses = [];
   currentIndex = 0;
+  score = 0;
+  resultsHTML = "";
 
   // for loop to line up questions and answer dictionaries together to correspond to each other
   for (let i = 0; i < numQuestions; i++) {
@@ -389,6 +393,11 @@ function startQuiz() {
   practiceInputSection.hidden = true; // getting rid of the section where users can enter questions once quiz has started
   quizContainer.hidden = false;
   resultsArea.innerHTML = ""; // results area initially is blank to be filled with html formatted content later
+
+  if (isTimed) {
+    timerDisplay.hidden = false;
+    startQuizTimer(30 * numQuestions); // giving 30 seconds per question when timed
+  }
 
   showQuestion();
 }
@@ -468,4 +477,127 @@ nextButton.addEventListener("click", () => {
   }
 });
 
+let score = 0;
+let resultsHTML = "";
+
 // add function to grade answers when submit button is pressed
+function gradeQuiz(outOfTime) {
+  saveCurrentAnswer(); // saving current answer immediately so that can update unanswered questions alert message when current question is answered
+
+  if (!outOfTime) {
+    let unansweredCount = 0;
+    let unansweredQuestions = "";
+
+    for (let i = 0; i < currentQuestions.length; i++) {
+      if (userResponses[i].root1 === "" || userResponses[i].root2 === "") {
+        unansweredCount++;
+
+        if (unansweredCount > 1) {
+          unansweredQuestions += ", " + (i + 1);
+        } else {
+          unansweredQuestions += i + 1;
+        }
+      }
+    }
+
+    if (unansweredCount > 0) {
+      alert(
+        `Try to answer all the questions! Missing question(s) at ${unansweredQuestions}`,
+      );
+
+      return; // preventing rest of grading logic form happening until all questions are answered
+    }
+  }
+
+  currentQuestionArea.hidden = true;
+  progressDisplay.hidden = true;
+  navButtons.hidden = true;
+  timerDisplay.hidden = true;
+
+  clearTimeout(timerId);
+
+  // for each loop functionality taken from w3schools - runs through every problem and its corresponding index in the currentQuestions list to call the function to check each of their answers for each problem being iterated over using the loop
+  currentQuestions.forEach((problem, i) => checkAnswer(problem, i));
+
+  // location.reload() method reloads the current HTML webpage, as taken from stackoverflow
+  resultsArea.innerHTML = `<h3 class="medium-small-size">You got ${score} out of ${currentQuestions.length}!</h3>
+    ${resultsHTML}
+    <br />
+
+    <button onclick="location.reload()" class="small-size">New Quiz</button>
+  `;
+}
+
+function checkAnswer(problem, index) {
+  saveCurrentAnswer();
+
+  const gottenRoot1 = parseInt(userResponses[index].root1);
+  const gottenRoot2 = parseInt(userResponses[index].root2);
+  let returnRoots;
+
+  // sorting roots to match with sorting of answers to each problem in making them above
+  if (gottenRoot1 > gottenRoot2) {
+    returnRoots = [gottenRoot2, gottenRoot1];
+  } else {
+    returnRoots = [gottenRoot1, gottenRoot2];
+  }
+
+  let isCorrect = false;
+  let color = "red";
+  let message = `Incorrect! Yours: ${userResponses[index].root1}, ${userResponses[index].root2} | Correct: ${problem.roots[0]}, ${problem.roots[1]}`;
+
+  if (
+    returnRoots[0] === problem.roots[0] &&
+    returnRoots[1] === problem.roots[1]
+  ) {
+    isCorrect = true;
+  }
+
+  if (isCorrect) {
+    score++;
+    color = "green";
+    message = "Correct!";
+  }
+
+  resultsHTML += `
+    <p class="very-small-size" style="color: ${color};">
+      ${index + 1}. ${problem.equation} | ${message}
+    </p>
+  `;
+}
+
+let timerId; // stores unique identification for the started timer in the start timer method to allow for using the clearTimeout method to end the corresponding timer with this identification
+
+// custom timer function that runs until remaining time is 0, then stops
+function startQuizTimer(durationInSeconds) {
+  let timeRemaining = durationInSeconds;
+  let firstDigitSeconds;
+
+  function tick() {
+    const minutes = Math.floor(timeRemaining / 60); // number of minutes remaining is integer division of seconds remaining by 60
+    const seconds = timeRemaining % 60; // remainder is leftover seconds that cannot be converted to minutes
+
+    if (seconds < 10) {
+      firstDigitSeconds = "0";
+    } else {
+      firstDigitSeconds = "";
+    }
+
+    timerDisplay.textContent = `${minutes}:${firstDigitSeconds}${seconds}`;
+
+    if (timeRemaining <= 30) {
+      timerDisplay.style.color = "red";
+    }
+
+    if (timeRemaining <= 0) {
+      gradeQuiz(true); // automatically submit/grade when time runs out - passing in true to prevent prompting answering unanswered questions logic since the user didn't have time to do it
+
+      return;
+    }
+
+    timeRemaining--;
+    timerId = setTimeout(tick, 1000); // using setTimeout method to run tick method for 1000 ms/1 sec until the next decrease to the time remaining
+  }
+
+  tick(); // start ticking immediately
+}

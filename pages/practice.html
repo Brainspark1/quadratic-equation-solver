@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Practice - Save My Quadratics Test</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="../resources/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -88,13 +88,20 @@
       <div id="nav-buttons">
         <button id="previous-button" class="small-size">Previous</button>
         <button id="next-button" class="small-size">Next</button>
-        <!-- submit button initially hidden, appears on last question at end of quiz -->
-        <button id="submit-button" class="small-size" hidden>Submit</button>
+        <!-- submit button initially hidden, appears on last question at end of quiz - passing in false into the gradeQuiz method as not auto submission by out of time, to prompt users to answer all unanswered questions if needed -->
+        <button
+          id="submit-button"
+          class="small-size"
+          onclick="gradeQuiz(false)"
+          hidden
+        >
+          Submit
+        </button>
       </div>
 
       <div id="results-area"></div>
     </section>
 
-    <script src="app.js"></script>
+    <script src="../resources/app.js"></script>
   </body>
 </html>
