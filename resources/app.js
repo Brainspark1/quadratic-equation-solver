@@ -45,6 +45,12 @@ The size of the numerical value held by a variable.
 `,
   `This is the point at which the quadratic function will go through the y-axis of the coordinate plane. Every quadratic function must have exactly one y-intercept.`,
   `These are the points at which the quadratic function will touch or go through the x-axis of the coordinate plane.`,
+  `A property is a mathematical condition that will hold true for every situation of a certain number or scenario.`,
+  `In case you haven't heard of this term before, the product is the result of multiplying some numbers/values together.`,
+  `Adding or removing terms from an equation, keeping both sides balanced of course, to produce a more favorable form to do something with.`,
+  `In general, a perfect square is a value that can be represented only by the square of another value. Numerically, an example could be 25, which is exactly 5 squared. \n\nAlgebraically, this involves only a single term, like (x + 2) or (3x - 23), being squared to produce a polynomial that is a perfect square of the term used.`,
+  `Remember, keeping the equation balanced!`,
+  `A factor is a value shared by every term in the equation, allowing it to be multiplied out to allow the remaining terms to be simplified without the common term. More colloquially known as "taking out."`,
 ];
 
 const alertBox = document.getElementById("customAlertBox");
